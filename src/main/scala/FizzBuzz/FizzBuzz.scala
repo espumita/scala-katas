@@ -4,6 +4,7 @@ case class FizzBuzz() {
 
 
   def format(number: Int): String = {
+    if (isMultipleOfThree(number) && isMultipleOfFive(number)) return "FizzBuzz"
     if (isMultipleOfThree(number)) return "Fizz"
     if (isMultipleOfFive(number)) "Buzz"
     else number.toString

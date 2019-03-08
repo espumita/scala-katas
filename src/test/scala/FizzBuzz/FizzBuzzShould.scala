@@ -33,4 +33,11 @@ class FizzBuzzShould  extends WordSpec with Matchers with  BeforeAndAfterEach {
     formattedNumber should be ("Buzz")
   }
 
+  "return FizzBuzz when a number is multiple of three and five" in {
+
+    val formattedNumber = fizzBuzz.format(15)
+
+    formattedNumber should be ("FizzBuzz")
+  }
+
 }
