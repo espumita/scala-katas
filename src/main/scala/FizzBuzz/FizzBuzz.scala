@@ -4,10 +4,14 @@ case class FizzBuzz() {
 
 
   def format(number: Int): String = {
-    if (isMultipleOfThree(number) && isMultipleOfFive(number)) return "FizzBuzz"
+    if (isMultipleOfThreeAndFive(number)) return "FizzBuzz"
     if (isMultipleOfThree(number)) return "Fizz"
     if (isMultipleOfFive(number)) "Buzz"
     else number.toString
+  }
+
+  private def isMultipleOfThreeAndFive(number: Int) = {
+    isMultipleOfThree(number) && isMultipleOfFive(number)
   }
 
   private def isMultipleOfThree(number: Int) = {
@@ -17,4 +21,5 @@ case class FizzBuzz() {
   private def isMultipleOfFive(number: Int) = {
     number % 5 == 0
   }
+
 }
