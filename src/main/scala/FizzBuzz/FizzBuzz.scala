@@ -3,8 +3,11 @@ package FizzBuzz
 case class FizzBuzz() {
 
   def format(number: Int): String = {
-    if ( number % 3 == 0) "Fizz"
+    if (isMultipleOfThree(number)) "Fizz"
     else number.toString
   }
 
+  private def isMultipleOfThree(number: Int) = {
+    number % 3 == 0
+  }
 }
