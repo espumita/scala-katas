@@ -1,11 +1,18 @@
 package FizzBuzz
 
-import org.scalatest.{WordSpec, Matchers}
+import org.scalatest.{BeforeAndAfterEach, Matchers, WordSpec}
 
-class FizzBuzzShould  extends WordSpec with Matchers {
+class FizzBuzzShould  extends WordSpec with Matchers with  BeforeAndAfterEach {
+
+
+  var fizzBuzz: FizzBuzz = _
+
+  override protected def beforeEach() = {
+    fizzBuzz = FizzBuzz()
+  }
+
 
   "return a number when a number is given" in {
-    val fizzBuzz = FizzBuzz()
 
     val formattedNumber = fizzBuzz.format(1)
 
@@ -13,7 +20,6 @@ class FizzBuzzShould  extends WordSpec with Matchers {
   }
 
   "return Fizz when a number is multiple of three" in {
-    val fizzBuzz = FizzBuzz()
 
     val formattedNumber = fizzBuzz.format(3)
 
@@ -21,7 +27,6 @@ class FizzBuzzShould  extends WordSpec with Matchers {
   }
 
   "return Buzz when a number is multiple of five" in {
-    val fizzBuzz = FizzBuzz()
 
     val formattedNumber = fizzBuzz.format(5)
 
