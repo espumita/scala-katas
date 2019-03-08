@@ -12,5 +12,12 @@ class FizzBuzzShould  extends WordSpec with Matchers {
     formattedNumber should be ("1")
   }
 
+  "return Fizz when a number is multiple of three" in {
+    val fizzBuzz = FizzBuzz()
+
+    val formattedNumber = fizzBuzz.format(3)
+
+    formattedNumber should be ("Fizz")
+  }
 
 }
