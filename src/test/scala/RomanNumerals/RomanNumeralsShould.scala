@@ -10,9 +10,7 @@ class RomanNumeralsShould extends WordSpec with Matchers with  BeforeAndAfterEac
     romanNumerals = RomanNumerals()
   }
 
-
-  "return I when number is 1,2 or 3" in {
-
+  "get roman numeral when number is given" in {
     romanNumerals.get(1) should be ("I")
     romanNumerals.get(2) should be ("II")
     romanNumerals.get(3) should be ("III")
@@ -41,9 +39,6 @@ class RomanNumeralsShould extends WordSpec with Matchers with  BeforeAndAfterEac
     romanNumerals.get(100) should be ("C")
     romanNumerals.get(399) should be ("CCCXCIX")
   }
-
-
-
 
 
 }
