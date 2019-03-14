@@ -30,6 +30,9 @@ class RomanNumeralsShould extends WordSpec with Matchers with  BeforeAndAfterEac
     romanNumerals.get(19) should be ("XIX")
     romanNumerals.get(20) should be ("XX")
     romanNumerals.get(39) should be ("XXXIX")
+    romanNumerals.get(40) should be ("XL")
+    romanNumerals.get(41) should be ("XLI")
+    romanNumerals.get(49) should be ("XLIX")
   }
 
 
