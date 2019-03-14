@@ -21,11 +21,11 @@ case class RomanNumerals() {
     case _ if number > 50 => add(50, number)
     case _ if number > 40 => add(40, number)
     case _ if number > 10 => add(10, number)
-    case _ => get(number - 1) + "I"
+    case _ => get(number - 1) + romanNumbers(1)
   }
-
 
   private def add(key: Int, number: Int) = {
     romanNumbers(key) + get(number - key)
   }
+
 }

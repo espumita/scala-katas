@@ -1,16 +1,12 @@
 package RomanNumerals
 
-import org.scalatest.{BeforeAndAfterEach, Matchers, WordSpec}
+import org.scalatest.{Matchers, WordSpec}
 
-class RomanNumeralsShould extends WordSpec with Matchers with  BeforeAndAfterEach {
+class RomanNumeralsShould extends WordSpec with Matchers {
 
-  var romanNumerals: RomanNumerals = _
-
-  override protected def beforeEach() = {
-    romanNumerals = RomanNumerals()
-  }
 
   "get roman numeral when number is given" in {
+    val romanNumerals = RomanNumerals()
     romanNumerals.get(1) should be ("I")
     romanNumerals.get(2) should be ("II")
     romanNumerals.get(3) should be ("III")
