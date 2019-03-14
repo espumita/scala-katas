@@ -9,6 +9,7 @@ case class RomanNumerals() {
     if (number == 5) return "V"
     if (number == 9) return "IX"
     if (number == 10) return "X"
+    if (number > 10) return "X" + get(number - 10)
     get(number - 1) + "I"
   }
 
