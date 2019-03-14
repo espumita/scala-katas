@@ -4,6 +4,10 @@ case class RomanNumerals() {
 
 
   def get(number: Int): String = {
+    if (number > 100) return "C"+ get(number - 100)
+    if (number == 100) return "C"
+    if (number > 90) return "XC" + get(number - 90)
+    if (number == 90) return "XC"
     if (number > 50) return "L" + get(number - 50)
     if (number == 50) return "L"
     if (number > 40) return "XL" + get(number - 40)
