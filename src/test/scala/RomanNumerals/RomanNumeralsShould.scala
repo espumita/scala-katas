@@ -18,6 +18,10 @@ class RomanNumeralsShould extends WordSpec with Matchers with  BeforeAndAfterEac
     romanNumerals.get(3) should be ("III")
   }
 
+  "return IV when number 4" in {
+
+    romanNumerals.get(4) should be ("IV")
+  }
 
 
 
