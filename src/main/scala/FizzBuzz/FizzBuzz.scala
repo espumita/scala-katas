@@ -3,15 +3,13 @@ package FizzBuzz
 case class FizzBuzz() {
 
 
-  def format(number: Int): String = {
-    if (isMultipleOfThreeAndFive(number)) return "FizzBuzz"
-    if (isMultipleOfThree(number)) return "Fizz"
-    if (isMultipleOfFive(number)) "Buzz"
-    else number.toString
-  }
 
-  private def isMultipleOfThreeAndFive(number: Int) = {
-    isMultipleOfThree(number) && isMultipleOfFive(number)
+
+  def format(number: Int): String = (isMultipleOfThree(number), isMultipleOfFive(number)) match {
+    case (true, true) => "FizzBuzz"
+    case (true, _) => "Fizz"
+    case (_, true) => "Buzz"
+    case (_, _) => number.toString
   }
 
   private def isMultipleOfThree(number: Int) = {
