@@ -24,8 +24,8 @@ case class RomanNumerals() {
     case _ => get(number - 1) + romanNumbers(1)
   }
 
-  private def add(key: Int, number: Int) = {
-    romanNumbers(key) + get(number - key)
+  private def add(value: Int, number: Int) = {
+    romanNumbers(value) + get(number - value)
   }
 
 }
