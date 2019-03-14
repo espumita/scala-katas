@@ -11,26 +11,15 @@ class RomanNumeralsShould extends WordSpec with Matchers with  BeforeAndAfterEac
   }
 
 
-  "return I when number is 1" in {
+  "return I when number is 1,2 or 3" in {
 
-    val formattedNumber = romanNumerals.get(1)
-
-    formattedNumber should be ("I")
+    romanNumerals.get(1) should be ("I")
+    romanNumerals.get(2) should be ("II")
+    romanNumerals.get(3) should be ("III")
   }
 
-  "return II when number is 2" in {
 
-    val formattedNumber = romanNumerals.get(2)
 
-    formattedNumber should be ("II")
-  }
-
-  "return III when number is 2" in {
-
-    val formattedNumber = romanNumerals.get(3)
-
-    formattedNumber should be ("III")
-  }
 
 
 }

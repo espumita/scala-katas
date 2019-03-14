@@ -3,9 +3,9 @@ package RomanNumerals
 case class RomanNumerals() {
 
 
-  def get(number: Int) = {
-    if (number == 1) "I"
-    if (number == 2) "II"
+  def get(number: Int): String = {
+    if (number == 1) return "I"
+    if (number == 2) return "II"
     "III"
   }
 
