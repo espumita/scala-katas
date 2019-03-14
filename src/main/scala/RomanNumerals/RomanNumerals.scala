@@ -14,16 +14,18 @@ case class RomanNumerals() {
     (1, "I")
   )
 
-  def get(number: Int): String = {
-    if (romanNumbers contains number){
-      return romanNumbers(number)
-    }
-    if (number > 100) return "C"+ get(number - 100)
-    if (number > 90) return "XC" + get(number - 90)
-    if (number > 50) return "L" + get(number - 50)
-    if (number > 40) return "XL" + get(number - 40)
-    if (number > 10) return "X" + get(number - 10)
-    get(number - 1) + "I"
+  def get(number: Int): String = number match {
+    case _ if romanNumbers contains number => romanNumbers(number)
+    case _ if number > 100 => add(100, number)
+    case _ if number > 90 => add(90, number)
+    case _ if number > 50 => add(50, number)
+    case _ if number > 40 => add(40, number)
+    case _ if number > 10 => add(10, number)
+    case _ => get(number - 1) + "I"
   }
 
+
+  private def add(key: Int, number: Int) = {
+    romanNumbers(key) + get(number - key)
+  }
 }
