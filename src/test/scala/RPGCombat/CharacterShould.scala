@@ -19,7 +19,7 @@ class CharacterShould extends WordSpec with Matchers {
     val aCharacter = GameCharacter()
     val anotherCharacter = GameCharacter()
 
-    aCharacter.dealDamageTo(anotherCharacter, 100)
+    aCharacter.dealDamageTo(anotherCharacter, damage =  100)
 
     anotherCharacter.health should be (900)
   }
@@ -28,7 +28,7 @@ class CharacterShould extends WordSpec with Matchers {
     val aCharacter = GameCharacter()
     val anotherCharacter = GameCharacter()
 
-    aCharacter.dealDamageTo(anotherCharacter, 2000)
+    aCharacter.dealDamageTo(anotherCharacter, damage =  2000)
 
     anotherCharacter.isAlive should be (false)
     anotherCharacter.health should be (0)
@@ -39,7 +39,7 @@ class CharacterShould extends WordSpec with Matchers {
     val anotherCharacter = GameCharacter()
     anotherCharacter.receivesDamage(100)
 
-    aCharacter.healthTo(anotherCharacter, 100)
+    aCharacter.healthTo(anotherCharacter, healthPoints =  100)
 
     anotherCharacter.health should be (1000)
   }
@@ -49,7 +49,7 @@ class CharacterShould extends WordSpec with Matchers {
     val anotherCharacter = GameCharacter()
     anotherCharacter.receivesDamage(2000)
 
-    aCharacter.healthTo(anotherCharacter, 100)
+    aCharacter.healthTo(anotherCharacter, healthPoints =  100)
 
     anotherCharacter.health should be (0)
   }
