@@ -8,9 +8,11 @@ object CreateGameCharacter {
 
 case class GameCharacter(var level: Int = 1, var maxRange : Int = 0) {
 
+
   private val MAX_HEALTH = 1000
   var health: Int = MAX_HEALTH
   var isAlive: Boolean = true
+  var factions: Set[Int] = Set[Int]()
 
   def dealDamageTo(focusCharacter: GameCharacter, damage: Int, distance: Int = 0) : Unit = {
     if (focusCharacter eq this) return

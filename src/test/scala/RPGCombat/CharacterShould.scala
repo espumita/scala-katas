@@ -112,6 +112,11 @@ class CharacterShould extends WordSpec with Matchers {
   }
 
 
+  "do not belong to any faction when there is newly created" in {
+    val anotherCharacter = GameCharacter()
+
+    anotherCharacter.factions.size should be (0)
+  }
 
 
   def givenADamagedCharacter(damage: Int) : GameCharacter = {
