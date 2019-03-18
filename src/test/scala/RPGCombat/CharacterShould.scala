@@ -31,6 +31,7 @@ class CharacterShould extends WordSpec with Matchers {
     aCharacter.dealDamageTo(anotherCharacter, 2000)
 
     anotherCharacter.isAlive should be (false)
+    anotherCharacter.health should be (0)
   }
 
   "a character can health another character" in {
@@ -43,6 +44,15 @@ class CharacterShould extends WordSpec with Matchers {
     anotherCharacter.health should be (1000)
   }
 
+  "dead characters cannot be healed" in {
+    val aCharacter = GameCharacter()
+    val anotherCharacter = GameCharacter()
+    anotherCharacter.receivesDamage(2000)
+
+    aCharacter.healthTo(anotherCharacter, 100)
+
+    anotherCharacter.health should be (0)
+  }
 
 
 }
