@@ -15,5 +15,14 @@ class CharacterShould extends WordSpec with Matchers {
     aCharacter.isAlive should be (true)
   }
 
+  "a character can deal damage to other character" in {
+    val aCharacter = GameCharacter()
+    val anotherCharacter = GameCharacter()
+
+    aCharacter.dealDamageTo(anotherCharacter, 100)
+
+    anotherCharacter.health should be (900)
+  }
+
 
 }
