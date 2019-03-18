@@ -2,9 +2,9 @@ package RPGCombat
 
 
 object CreateGameCharacter {
-  def Melee(): GameCharacter = GameCharacter(maxRange = 2)
+  def Melee() = GameCharacter(maxRange = 2)
+  def Ranged() = GameCharacter(maxRange = 20)
 }
-
 
 case class GameCharacter(var level: Int = 1, var maxRange : Int = 0) {
 

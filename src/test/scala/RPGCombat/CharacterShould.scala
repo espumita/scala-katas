@@ -96,9 +96,19 @@ class CharacterShould extends WordSpec with Matchers {
     val anotherCharacter = GameCharacter()
 
     aCharacter.dealDamageTo(anotherCharacter, damage =  100, distance =  12)
-    aCharacter.dealDamageTo(anotherCharacter, damage =  100, distance =  1)
+    aCharacter.dealDamageTo(anotherCharacter, damage =  50, distance =  1)
 
-    anotherCharacter.health should be (900)
+    anotherCharacter.health should be (950)
+  }
+
+  "ranged fighters have a range of 20 meters" in {
+    val aCharacter = CreateGameCharacter.Ranged()
+    val anotherCharacter = GameCharacter()
+
+    aCharacter.dealDamageTo(anotherCharacter, damage =  100, distance =  21)
+    aCharacter.dealDamageTo(anotherCharacter, damage =  50, distance =  6)
+
+    anotherCharacter.health should be (950)
   }
 
 
