@@ -82,6 +82,15 @@ class CharacterShould extends WordSpec with Matchers {
     anotherCharacter.health should be (850)
   }
 
+  "have an attack max range" in {
+    val aCharacter = GameCharacter(maxRange = 8)
+    val anotherCharacter = GameCharacter()
+
+    aCharacter.dealDamageTo(anotherCharacter, damage =  100, distance =  10)
+
+    anotherCharacter.health should be (1000)
+  }
+
 
 
 
