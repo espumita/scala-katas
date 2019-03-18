@@ -64,13 +64,22 @@ class CharacterShould extends WordSpec with Matchers {
     aCharacter.health should be (1000)
   }
 
-  "deals 50% damage less when attacs a target that is 5 or more levels above" in {
+  "deals 50% damage less when attacks a target that is 5 or more levels above" in {
     val aCharacter = GameCharacter(level = 1)
-    val aNotherCharacter = GameCharacter(level = 6)
+    val anotherCharacter = GameCharacter(level = 6)
 
-    aCharacter.dealDamageTo(aNotherCharacter, 100)
+    aCharacter.dealDamageTo(anotherCharacter, 100)
 
-    aNotherCharacter.health should be (950)
+    anotherCharacter.health should be (950)
+  }
+
+  "deals 50% damage more when attacks a target that is 5 or more levels below" in {
+    val aCharacter = GameCharacter(level = 6)
+    val anotherCharacter = GameCharacter(level = 1)
+
+    aCharacter.dealDamageTo(anotherCharacter, 100)
+
+    anotherCharacter.health should be (850)
   }
 
 

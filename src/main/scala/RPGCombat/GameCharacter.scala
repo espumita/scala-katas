@@ -21,8 +21,10 @@ case class GameCharacter(var level: Int = 1) {
   }
 
   private def calculateDamage(damage: Int, attackerLevel: Int) : Int = {
-    if(attackerLevel + 5 <= level) Math.round(damage * 0.5f)
-    else damage
+    val levelDifference = attackerLevel - level
+    if(levelDifference <= -5) return Math.round(damage * 0.5f)
+    if(levelDifference >= 5 ) return Math.round(damage * 1.5f)
+    damage
   }
 
   private def resolve(damage: Int) = {
