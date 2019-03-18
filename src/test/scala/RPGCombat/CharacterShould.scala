@@ -24,5 +24,14 @@ class CharacterShould extends WordSpec with Matchers {
     anotherCharacter.health should be (900)
   }
 
+  "a character dies when health becomes 0 or less" in {
+    val aCharacter = GameCharacter()
+    val anotherCharacter = GameCharacter()
+
+    aCharacter.dealDamageTo(anotherCharacter, 2000)
+
+    anotherCharacter.isAlive should be (false)
+  }
+
 
 }

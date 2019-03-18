@@ -8,6 +8,7 @@ case class GameCharacter() {
 
   def dealDamageTo(focusCharacter: GameCharacter, damage: Int) : Unit = {
     focusCharacter.health = focusCharacter.health - damage
+    if (focusCharacter.health < 0) focusCharacter.isAlive = false
   }
 
 
