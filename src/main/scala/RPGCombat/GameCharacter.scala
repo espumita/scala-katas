@@ -1,6 +1,12 @@
 package RPGCombat
 
-case class GameCharacter(var level: Int = 1, val maxRange : Int = 0) {
+
+object CreateGameCharacter {
+  def Melee(): GameCharacter = GameCharacter(maxRange = 2)
+}
+
+
+case class GameCharacter(var level: Int = 1, var maxRange : Int = 0) {
 
   private val MAX_HEALTH = 1000
   var health: Int = MAX_HEALTH

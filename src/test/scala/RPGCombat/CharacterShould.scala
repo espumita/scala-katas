@@ -91,6 +91,16 @@ class CharacterShould extends WordSpec with Matchers {
     anotherCharacter.health should be (1000)
   }
 
+  "melee fighters have a range of 2 meters" in {
+    val aCharacter = CreateGameCharacter.Melee()
+    val anotherCharacter = GameCharacter()
+
+    aCharacter.dealDamageTo(anotherCharacter, damage =  100, distance =  12)
+    aCharacter.dealDamageTo(anotherCharacter, damage =  100, distance =  1)
+
+    anotherCharacter.health should be (900)
+  }
+
 
 
 
