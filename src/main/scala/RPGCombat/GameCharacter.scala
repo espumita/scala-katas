@@ -2,7 +2,8 @@ package RPGCombat
 
 case class GameCharacter() {
 
-  var health: Int = 1000
+  private val MAX_HEALTH = 1000
+  var health: Int = MAX_HEALTH
   var level: Int = 1
   var isAlive: Boolean = true
 
@@ -10,20 +11,20 @@ case class GameCharacter() {
     focusCharacter.receivesDamage(damage)
   }
 
-  def receivesDamage(damage: Int) : Unit ={
+  def healthTo(focusCharacter: GameCharacter, healthPoints: Int) : Unit = {
+    focusCharacter.receivesHealth(healthPoints)
+  }
+
+  private def receivesDamage(damage: Int) : Unit ={
     if (damage >= health) health = 0
     else health = health - damage
     if (health <= 0) isAlive = false
   }
 
-  def healthTo(focusCharacter: GameCharacter, healthPoints: Int) : Unit = {
-    focusCharacter.receivesHealth(healthPoints)
-  }
-
-  def receivesHealth(healthPoints: Int): Unit = {
+  private def receivesHealth(healthPoints: Int): Unit = {
     if (!isAlive) return
-    if (health == 1000) return
-    if (health + healthPoints > 1000) health = 1000
+    if (health == MAX_HEALTH) return
+    if (health + healthPoints > MAX_HEALTH) health = MAX_HEALTH
     else health = health + healthPoints
 
   }

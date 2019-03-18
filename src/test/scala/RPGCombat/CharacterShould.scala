@@ -5,8 +5,6 @@ import org.scalatest.{Matchers, WordSpec}
 class CharacterShould extends WordSpec with Matchers {
 
 
-
-
   "a character starts full health and first level"  in {
     val aCharacter = GameCharacter()
 
@@ -36,8 +34,7 @@ class CharacterShould extends WordSpec with Matchers {
 
   "a character can health another character" in {
     val aCharacter = GameCharacter()
-    val anotherCharacter = GameCharacter()
-    anotherCharacter.receivesDamage(100)
+    val anotherCharacter = givenADamagedCharacter(damage = 100)
 
     aCharacter.healthTo(anotherCharacter, healthPoints =  100)
 
@@ -46,8 +43,7 @@ class CharacterShould extends WordSpec with Matchers {
 
   "dead characters cannot be healed" in {
     val aCharacter = GameCharacter()
-    val anotherCharacter = GameCharacter()
-    anotherCharacter.receivesDamage(2000)
+    val anotherCharacter = givenADamagedCharacter(damage = 2000)
 
     aCharacter.healthTo(anotherCharacter, healthPoints =  100)
 
@@ -61,6 +57,12 @@ class CharacterShould extends WordSpec with Matchers {
     aCharacter.healthTo(anotherCharacter, healthPoints =  100)
 
     anotherCharacter.health should be (1000)
+  }
+
+  def givenADamagedCharacter(damage: Int) : GameCharacter = {
+    val character = GameCharacter()
+    GameCharacter().dealDamageTo(character, damage)
+    character
   }
 
 
