@@ -12,8 +12,8 @@ case class GameCharacter() {
     focusCharacter.receivesDamage(damage)
   }
 
-  def healthTo(focusCharacter: GameCharacter, healthPoints: Int) : Unit = {
-    focusCharacter.receivesHealth(healthPoints)
+  def healthItself(healthPoints: Int) : Unit = {
+    receivesHealth(healthPoints)
   }
 
   private def receivesDamage(damage: Int) : Unit ={

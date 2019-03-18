@@ -32,31 +32,28 @@ class CharacterShould extends WordSpec with Matchers {
     anotherCharacter.health should be (0)
   }
 
-  "a character can health another character" in {
-    val aCharacter = GameCharacter()
-    val anotherCharacter = givenADamagedCharacter(damage = 100)
+  "a character can only health itself" in {
+    val aCharacter = givenADamagedCharacter(damage = 100)
 
-    aCharacter.healthTo(anotherCharacter, healthPoints =  100)
+    aCharacter.healthItself(healthPoints =  100)
 
-    anotherCharacter.health should be (1000)
+    aCharacter.health should be (1000)
   }
 
   "dead characters cannot be healed" in {
-    val aCharacter = GameCharacter()
-    val anotherCharacter = givenADamagedCharacter(damage = 2000)
+    val aCharacter = givenADamagedCharacter(damage = 2000)
 
-    aCharacter.healthTo(anotherCharacter, healthPoints =  100)
+    aCharacter.healthItself(healthPoints =  100)
 
-    anotherCharacter.health should be (0)
+    aCharacter.health should be (0)
   }
 
   "heal cannot raise health above character full health" in {
     val aCharacter = GameCharacter()
-    val anotherCharacter = GameCharacter()
 
-    aCharacter.healthTo(anotherCharacter, healthPoints =  100)
+    aCharacter.healthItself(healthPoints =  100)
 
-    anotherCharacter.health should be (1000)
+    aCharacter.health should be (1000)
   }
 
   "a character cannot deal damage to itself" in {
@@ -66,7 +63,6 @@ class CharacterShould extends WordSpec with Matchers {
 
     aCharacter.health should be (1000)
   }
-
 
   def givenADamagedCharacter(damage: Int) : GameCharacter = {
     val character = GameCharacter()
