@@ -5,7 +5,7 @@ import org.scalatest.{Matchers, WordSpec}
 class CharacterShould extends WordSpec with Matchers {
 
 
-  "a character starts full health and first level"  in {
+  "starts full health and first level"  in {
     val aCharacter = GameCharacter()
 
     aCharacter.health should be (1000)
@@ -13,7 +13,7 @@ class CharacterShould extends WordSpec with Matchers {
     aCharacter.isAlive should be (true)
   }
 
-  "a character can deal damage to other character" in {
+  "can deal damage to other character" in {
     val aCharacter = GameCharacter()
     val anotherCharacter = GameCharacter()
 
@@ -22,7 +22,7 @@ class CharacterShould extends WordSpec with Matchers {
     anotherCharacter.health should be (900)
   }
 
-  "a character dies when health becomes 0 or less" in {
+  "dies when health becomes 0 or less" in {
     val aCharacter = GameCharacter()
     val anotherCharacter = GameCharacter()
 
@@ -32,7 +32,7 @@ class CharacterShould extends WordSpec with Matchers {
     anotherCharacter.health should be (0)
   }
 
-  "a character can only health itself" in {
+  "can only health itself" in {
     val aCharacter = givenADamagedCharacter(damage = 100)
 
     aCharacter.healthItself(healthPoints =  100)
@@ -40,7 +40,7 @@ class CharacterShould extends WordSpec with Matchers {
     aCharacter.health should be (1000)
   }
 
-  "dead characters cannot be healed" in {
+  "cannot be healed when it is dead" in {
     val aCharacter = givenADamagedCharacter(damage = 2000)
 
     aCharacter.healthItself(healthPoints =  100)
@@ -48,7 +48,7 @@ class CharacterShould extends WordSpec with Matchers {
     aCharacter.health should be (0)
   }
 
-  "heal cannot raise health above character full health" in {
+  "cannot raise health above full health" in {
     val aCharacter = GameCharacter()
 
     aCharacter.healthItself(healthPoints =  100)
@@ -56,13 +56,25 @@ class CharacterShould extends WordSpec with Matchers {
     aCharacter.health should be (1000)
   }
 
-  "a character cannot deal damage to itself" in {
+  "cannot deal damage to itself" in {
     val aCharacter = GameCharacter()
 
     aCharacter.dealDamageTo(aCharacter, 100)
 
     aCharacter.health should be (1000)
   }
+
+  "deals 50% damage less when attacs a target that is 5 or more levels above" in {
+    val aCharacter = GameCharacter(level = 1)
+    val aNotherCharacter = GameCharacter(level = 6)
+
+    aCharacter.dealDamageTo(aNotherCharacter, 100)
+
+    aNotherCharacter.health should be (950)
+  }
+
+
+
 
   def givenADamagedCharacter(damage: Int) : GameCharacter = {
     val character = GameCharacter()
