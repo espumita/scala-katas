@@ -12,6 +12,7 @@ class CharacterShould extends WordSpec with Matchers {
 
     aCharacter.health should be (1000)
     aCharacter.level should be (1)
+    aCharacter.isAlive should be (true)
   }
 
 
