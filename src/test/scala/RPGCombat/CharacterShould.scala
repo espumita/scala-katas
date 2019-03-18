@@ -7,7 +7,7 @@ class CharacterShould extends WordSpec with Matchers {
 
 
 
-  "a character starts full health and lvl 1"  in {
+  "a character starts full health and first level"  in {
     val aCharacter = GameCharacter()
 
     aCharacter.health should be (1000)
@@ -52,6 +52,15 @@ class CharacterShould extends WordSpec with Matchers {
     aCharacter.healthTo(anotherCharacter, healthPoints =  100)
 
     anotherCharacter.health should be (0)
+  }
+
+  "heal cannot raise health above character full health" in {
+    val aCharacter = GameCharacter()
+    val anotherCharacter = GameCharacter()
+
+    aCharacter.healthTo(anotherCharacter, healthPoints =  100)
+
+    anotherCharacter.health should be (1000)
   }
 
 
