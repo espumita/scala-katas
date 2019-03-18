@@ -8,6 +8,7 @@ case class GameCharacter() {
   var isAlive: Boolean = true
 
   def dealDamageTo(focusCharacter: GameCharacter, damage: Int) : Unit = {
+    if (focusCharacter eq this) return
     focusCharacter.receivesDamage(damage)
   }
 

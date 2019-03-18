@@ -59,6 +59,15 @@ class CharacterShould extends WordSpec with Matchers {
     anotherCharacter.health should be (1000)
   }
 
+  "a character cannot deal damage to itself" in {
+    val aCharacter = GameCharacter()
+
+    aCharacter.dealDamageTo(aCharacter, 100)
+
+    aCharacter.health should be (1000)
+  }
+
+
   def givenADamagedCharacter(damage: Int) : GameCharacter = {
     val character = GameCharacter()
     GameCharacter().dealDamageTo(character, damage)
