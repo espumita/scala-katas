@@ -140,6 +140,18 @@ class CharacterShould extends WordSpec with Matchers {
     anotherCharacter.health should be (1000)
   }
 
+  "allies can heal one another." in {
+    val aCharacter = GameCharacter()
+    val anotherCharacter = givenADamagedCharacter(damage = 200)
+    aCharacter.joinFaction(Faction.Faction1)
+    anotherCharacter.joinFaction(Faction.Faction1)
+
+    aCharacter.healthTo(anotherCharacter, 200)
+
+    anotherCharacter.health should be (1000)
+  }
+
+
 
   def givenADamagedCharacter(damage: Int) : GameCharacter = {
     val character = GameCharacter()
