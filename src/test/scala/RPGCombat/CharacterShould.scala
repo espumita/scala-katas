@@ -113,9 +113,19 @@ class CharacterShould extends WordSpec with Matchers {
 
 
   "do not belong to any faction when there is newly created" in {
-    val anotherCharacter = GameCharacter()
+    val aCharacter = GameCharacter()
 
-    anotherCharacter.factions.size should be (0)
+    aCharacter.factions.size should be (0)
+  }
+
+  "may join or leave one or more factions" in {
+    val aCharacter = GameCharacter()
+
+    aCharacter.joinFaction(Faction.Faction1)
+    aCharacter.leaveFaction(Faction.Faction1)
+    aCharacter.joinFaction(Faction.Faction2)
+
+    aCharacter.factions.size should be (1)
   }
 
 

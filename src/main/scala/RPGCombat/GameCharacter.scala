@@ -1,5 +1,7 @@
 package RPGCombat
 
+import RPGCombat.Faction.Faction
+
 
 object CreateGameCharacter {
   def Melee() = GameCharacter(maxRange = 2)
@@ -7,13 +9,12 @@ object CreateGameCharacter {
 }
 
 case class GameCharacter(var level: Int = 1, var maxRange : Int = 0) {
-
-
   private val MAX_HEALTH = 1000
+
+
   var health: Int = MAX_HEALTH
   var isAlive: Boolean = true
-  var factions: Set[Int] = Set[Int]()
-
+  var factions: Set[Faction] = Set[Faction]()
   def dealDamageTo(focusCharacter: GameCharacter, damage: Int, distance: Int = 0) : Unit = {
     if (focusCharacter eq this) return
     if (distance > maxRange) return
@@ -22,6 +23,14 @@ case class GameCharacter(var level: Int = 1, var maxRange : Int = 0) {
 
   def healthItself(healthPoints: Int) : Unit = {
     receivesHealth(healthPoints)
+  }
+
+  def joinFaction(faction: Faction) : Unit = {
+    factions = factions + faction
+  }
+
+  def leaveFaction(factionToLeave: Faction) : Unit = {
+    factions = factions.filter(faction => !(faction eq factionToLeave))
   }
 
   private def receivesDamage(damage: Int, attackerLevel: Int) : Unit ={
