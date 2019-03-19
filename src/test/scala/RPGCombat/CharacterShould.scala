@@ -118,6 +118,7 @@ class CharacterShould extends WordSpec with Matchers {
     aCharacter.factions.size should be (0)
   }
 
+
   "may join or leave one or more factions" in {
     val aCharacter = GameCharacter()
 
@@ -126,6 +127,17 @@ class CharacterShould extends WordSpec with Matchers {
     aCharacter.joinFaction(Faction.Faction2)
 
     aCharacter.factions.size should be (1)
+  }
+
+  "allies cannot deal damage to one another" in {
+    val aCharacter = GameCharacter()
+    val anotherCharacter = GameCharacter()
+    aCharacter.joinFaction(Faction.Faction1)
+    anotherCharacter.joinFaction(Faction.Faction1)
+
+    aCharacter.dealDamageTo(anotherCharacter, damage = 50)
+
+    anotherCharacter.health should be (1000)
   }
 
 

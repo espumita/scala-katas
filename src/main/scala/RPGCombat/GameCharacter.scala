@@ -11,16 +11,17 @@ object CreateGameCharacter {
 case class GameCharacter(var level: Int = 1, var maxRange : Int = 0) {
   private val MAX_HEALTH = 1000
 
-
   var health: Int = MAX_HEALTH
+
+
   var isAlive: Boolean = true
   var factions: Set[Faction] = Set[Faction]()
   def dealDamageTo(focusCharacter: GameCharacter, damage: Int, distance: Int = 0) : Unit = {
     if (focusCharacter eq this) return
+    if (factions.exists(focusCharacter.belongTo)) return
     if (distance > maxRange) return
     focusCharacter.receivesDamage(damage, level)
   }
-
   def healthItself(healthPoints: Int) : Unit = {
     receivesHealth(healthPoints)
   }
@@ -31,6 +32,10 @@ case class GameCharacter(var level: Int = 1, var maxRange : Int = 0) {
 
   def leaveFaction(factionToLeave: Faction) : Unit = {
     factions = factions.filter(faction => !(faction eq factionToLeave))
+  }
+
+  private def belongTo(faction: Faction): Boolean = {
+    factions contains(faction)
   }
 
   private def receivesDamage(damage: Int, attackerLevel: Int) : Unit ={
