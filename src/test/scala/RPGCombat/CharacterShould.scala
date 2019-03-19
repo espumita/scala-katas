@@ -146,7 +146,7 @@ class CharacterShould extends WordSpec with Matchers {
     aCharacter.joinFaction(Faction.Faction1)
     anotherCharacter.joinFaction(Faction.Faction1)
 
-    aCharacter.healthTo(anotherCharacter, 200)
+    aCharacter.healthTo(anotherCharacter, healthPoints = 200)
 
     anotherCharacter.health should be (1000)
   }
